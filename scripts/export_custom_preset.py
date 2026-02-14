@@ -3,7 +3,7 @@ Exports a project with a custom preset.
 """
 from pathlib import Path
 from typing import Optional
-from .export_preset_access import ExportPresetAccessor
+from .godot_export_preset_access import ExportPresetAccessor
 from .export_preset import export_preset
 
 
