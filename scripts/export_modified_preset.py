@@ -1,7 +1,7 @@
 from pathlib import Path
 from typing import Optional
 
-from .export_preset_access import ExportPresetAccessor
+from .godot_export_preset_access import ExportPresetAccessor
 from .export_custom_preset import export_custom_preset
 
 
