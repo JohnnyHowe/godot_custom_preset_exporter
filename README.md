@@ -15,42 +15,39 @@ Python helpers to export Godot projects via the CLI, including exporting with mo
 ## Usage
 ### Export Using an Existing Preset
 ```python
-from pathlib import Path
-from export_preset import export_preset
+from godot_custom_preset_exporter import export_preset
 
 export_preset(
-    project_root=Path(r"C:\Projects\MyGame"),
+    project_root=r"C:\Projects\MyGame",
     preset_name="Windows Desktop",
-    export_path=Path(r"C:\Exports\MyGame.exe"),
+    export_path=r"C:\Exports\MyGame.exe",
     debug=False,
 )
 ```
 
 ### Export Using a Modified Preset
 ```python
-from pathlib import Path
-from export_modified_preset import export_modified_preset
+from godot_custom_preset_exporter import export_modified_preset
 
 export_modified_preset(
-    project_root=Path(r"C:\Projects\MyGame"),
+    project_root=r"C:\Projects\MyGame",
     export_preset_name="Windows Desktop",
     export_preset_data_overrides={
         "options": {
             "binary_format/embed_pck": True
         }
     },
-    export_path=Path(r"C:\Exports\MyGame.exe"),
+    export_path=r"C:\Exports\MyGame.exe",
     debug=False,
 )
 ```
 
 ### Export Using a Custom Preset
 ```python
-from pathlib import Path
-from export_custom_preset import export_custom_preset
+from godot_custom_preset_exporter import export_custom_preset
 
 export_custom_preset(
-    project_root=Path(r"C:\Projects\MyGame"),
+    project_root=r"C:\Projects\MyGame",
     export_preset_data={
         "name": "My Custom Preset",
         "platform": "Windows Desktop",
@@ -59,7 +56,7 @@ export_custom_preset(
             "binary_format/embed_pck": True,
         },
     },
-    export_path=Path(r"C:\Exports\MyGame.exe"),
+    export_path=r"C:\Exports\MyGame.exe",
     debug=False,
 )
 ```
