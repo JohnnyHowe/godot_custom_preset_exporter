@@ -5,7 +5,7 @@ from pathlib import Path
 from typing import Optional
 
 
-ENCRYPTION_KEY_KEY = "SCRIPT_AES256_ENCRYPTION_KEY"
+ENCRYPTION_KEY_ENV_NAME = "SCRIPT_AES256_ENCRYPTION_KEY"
 
 
 def export_preset(
@@ -37,12 +37,12 @@ def _get_env_copy_with_key_set(encryption_key: Optional[str]) -> os._Environ[str
 	Sets SCRIPT_AES256_ENCRYPTION_KEY in env.
 	If encryption_key is None, no entry for it will exist in env.
 	"""
-	env = os.environ.copy()
+	env_copy = os.environ.copy()
 	if encryption_key != None:
-		env[ENCRYPTION_KEY_KEY] = encryption_key
-	else:
-		env.pop(ENCRYPTION_KEY_KEY)		# Ensure it's not there
-	return env
+		env_copy[ENCRYPTION_KEY_ENV_NAME] = encryption_key
+	elif ENCRYPTION_KEY_ENV_NAME in env_copy:
+		env_copy.pop(ENCRYPTION_KEY_ENV_NAME)
+	return env_copy
 
 
 def _sanitise_path(path: Path) -> str:
