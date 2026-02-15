@@ -20,6 +20,10 @@ def export_preset(
 	See https://docs.godotengine.org/en/latest/tutorials/editor/command_line_tutorial.html
 	"""
 
+	if not export_path.parent.exists():
+		print(f"Export path does not exist. Creating it at {str(export_path)}")
+		export_path.parent.mkdir(parents=True, exist_ok=True)
+
 	command = [
 		"godot", "--headless",
 		"--path", _sanitise_path(project_root),
