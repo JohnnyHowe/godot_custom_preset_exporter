@@ -34,10 +34,11 @@ def export_modified_preset(
 		encryption_key: Optional encryption key to use for the export.
 	"""
 	preset_accessor = ExportPresetAccessor.from_project(project_root)
-	preset_data = preset_accessor.get_preset(export_preset_name)
+	preset_data = preset_accessor.get_preset_copy(export_preset_name)
 
 	_overwrite_dict_values(preset_data, export_preset_data_overrides)
 	preset_data["name"] = export_preset_name + MODIFIED_PRESET_SUFFIX
+	preset_accessor.save()
 
 	export_custom_preset(
 		project_root,
